@@ -1,0 +1,60 @@
+<!-- Copyright 2022 Google LLC.
+SPDX-License-Identifier: Apache-2.0 -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>⚠️ Clickjacking demo - Attacker</title>
+		<style type="text/css">
+			iframe {
+				outline: 4px solid blue;
+				opacity: 0.2;
+				filter: blur(3px);
+				position: absolute;
+				z-index: 1;
+				margin-top: 30px;
+				transition: 1s all;
+				transform: scale(0.9);
+			}
+
+			button {
+				cursor: pointer;
+				padding: 15px;
+				position: absolute;
+				left: 40px;
+				top: 620px;
+				outline: 2px solid red;
+				background-color: cornflowerblue;
+				font-weight: bold;
+				font-size: 18px;
+				margin-top: 30px;
+			}
+
+			body:has(#checkbox:checked) iframe {
+				transform: scale(0.8);
+				filter: unset;
+				opacity: unset;
+			}
+
+			form label {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<iframe
+			src="{{paymentURL}}"
+			height="700"
+			width="700"
+			scrolling="no"
+		></iframe>
+
+		<button>Click to get a prize!</button>
+		<form>
+			<input type="checkbox" id="checkbox" />
+			<label for="checkbox">Help me visualize the iframe website</label>
+		</form>
+	</body>
+</html>

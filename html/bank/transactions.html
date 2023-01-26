@@ -1,0 +1,80 @@
+<!-- Copyright 2022 Google LLC.
+SPDX-License-Identifier: Apache-2.0 -->
+
+{% extends 'base.html' %} {% block title %}{% endblock %} {% block content %}
+
+<p>Your balance is <span class="amount">{{user.balance}}</span>.</p>
+
+{% if transactions.moneyOut.length %}
+
+<h1>Money Out</h1>
+
+<table>
+	<caption>
+		Money Out Transactions
+	</caption>
+	<thead>
+		<tr>
+			<th>Recipient</th>
+			<th>Amount</th>
+			<th>Reference</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in transactions.moneyOut %}
+		<tr>
+			<td>{{item.name}}</td>
+			<td><span class="amount">{{item.amount}}</span></td>
+			<td>
+				<button
+					data-id="{{item.id}}"
+					data-type="moneyOut"
+					class="load-reference-message"
+				>
+					View
+				</button>
+			</td>
+		</tr>
+
+		{% endfor %}
+	</tbody>
+</table>
+
+{% endif %} {% if transactions.moneyIn.length %}
+
+<h1>Money In</h1>
+
+<table>
+	<caption>
+		Money In Transactions
+	</caption>
+	<thead>
+		<tr>
+			<th>Sender</th>
+			<th>Amount</th>
+			<th>Reference</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in transactions.moneyIn %}
+		<tr>
+			<td>{{item.name}}</td>
+			<td>
+				<span class="amount"> {{item.amount}}</span>
+			</td>
+			<td>
+				<button
+					class="load-reference-message"
+					data-type="moneyIn"
+					data-id="{{item.id}}"
+				>
+					View
+				</button>
+			</td>
+		</tr>
+
+		{% endfor %}
+	</tbody>
+</table>
+
+{% endif %} {% endblock %}

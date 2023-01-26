@@ -1,0 +1,20 @@
+{
+  "name": "web-security-codelab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Code for the web fundamentals security training codelab",
+  "license": "Apache-2.0",
+  "main": "main-server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main-server.js",
+    "dev": "node --watch main-server.js"
+  },
+  "dependencies": {
+    "cat-names": "^3.1.0",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "fake-currency-demo": "^1.0.2",
+    "nunjucks": "^3.2.3"
+  }
+}

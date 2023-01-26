@@ -1,0 +1,23 @@
+<!-- Copyright 2022 Google LLC.
+SPDX-License-Identifier: Apache-2.0 -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>⚠️ CSRF demo - Attacker</title>
+	</head>
+	<body>
+		<form action="{{formURL}}" method="post">
+			<input type="text" name="name" value="Attacker" />
+
+			<input type="number" name="amount" value="2" />
+			<input type="text" name="reference" value="Via CSRF ⚠️" />
+			<button type="submit">Submit</button>
+		</form>
+		<script type="text/javascript">
+			// document.querySelector("form").submit();
+		</script>
+	</body>
+</html>

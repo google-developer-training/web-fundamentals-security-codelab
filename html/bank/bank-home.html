@@ -1,0 +1,18 @@
+<!-- Copyright 2022 Google LLC.
+SPDX-License-Identifier: Apache-2.0 -->
+
+{% extends 'base.html' %} {% block title %}{% endblock %} {% block content %}
+
+<h1>Bank Home Page</h1>
+
+{% if user %}
+<p>Welcome {{user.name}}, you are logged in!</p>
+<p>Your balance is <span class="amount">{{user.balance}}</span>.</p>
+
+{% else %}
+<p>
+	<a href="/bank/login">Login!</a>
+	<span>(No username or password needed for this demo)</span>
+</p>
+
+{% endif %} {% endblock %}

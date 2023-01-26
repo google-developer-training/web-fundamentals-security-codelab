@@ -1,0 +1,50 @@
+<!-- Copyright 2022 Google LLC.
+SPDX-License-Identifier: Apache-2.0 -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>{{ title }}</title>
+		<link href="https://hawkz.github.io/gdcss/gd.css" rel="stylesheet" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+		/>
+		<script defer type="module" src="/assets/bank.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<nav>
+				<a href="/bank">Home</a>
+
+				<ul>
+					{% if user %}
+					<li>
+						Your balance:
+						<span class="amount">{{user.balance}}</span>
+					</li>
+					<li>
+						<a href="/bank/transactions">Transactions</a>
+					</li>
+					<li>
+						<a href="/bank/send">Send money</a>
+					</li>
+					<li><a href="/bank/logout">Logout</a></li>
+					{% else %}
+					<li><a href="/bank/login">Login</a></li>
+					{% endif %}
+				</ul>
+			</nav>
+		</header>
+
+		<main id="main-content">{% block content %}{% endblock %}</main>
+
+		<footer>
+			<article>
+				<p>This is a demo</p>
+			</article>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!-- Copyright 2022 Google LLC.
+SPDX-License-Identifier: Apache-2.0 -->
+
+{% extends 'base.html' %} {% block title %}{% endblock %} {% block content %}
+
+<h1>Send money</h1>
+<p>Your balance is <span class="amount">{{user.balance}}</span>.</p>
+
+<form action="/bank/send" method="post">
+	<fieldset>
+		<legend>Send money</legend>
+		<p>
+			<label for="name"
+				>Send to (used as an example, you don't need to change
+				this)</label
+			>
+			<input type="text" required name="name" value="{{exampleFriend}}" />
+		</p>
+		<p>
+			<label for="amount"
+				>Amount (you have
+				<span class="amount">{{user.balance}}</span> available):
+			</label>
+			<input
+				type="number"
+				name="amount"
+				required
+				min="1"
+				max="{{user.balance}}"
+				value="1"
+			/>
+		</p>
+
+		<p>
+			<label for="reference">Reference (don't change this): </label>
+			<input
+				type="text"
+				name="reference"
+				id="reference"
+				required
+				value="{{defaultReference}}"
+				readonly
+			/>
+		</p>
+
+		<p>
+			<button type="submit" id="submit">Submit Button</button>
+		</p>
+	</fieldset>
+</form>
+{% endblock %}
